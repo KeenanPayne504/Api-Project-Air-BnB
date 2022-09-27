@@ -1,15 +1,10 @@
-# API-Project
-# API-Project
-
-[database-schema]:
-
-<img width="603" alt="soundcloud-db-schema" src="https://user-images.githubusercontent.com/102884954/186736210-380cd861-038b-4e23-83ed-a8138609b07c.png">
-
-# `<name of application here>`
+# AirBnB Clone
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+![airbnb-dbdiagram]
+
+[airbnb-dbdiagram]: ../assets/airbnb_dbdiagram.png
 
 ## API Documentation
 
@@ -58,7 +53,7 @@ Returns the information about the current user that is logged in.
 
 * Require Authentication: true
 * Request
-  * Method: "GET"
+  * Method: GET
   * URL: /api/session
   * Body: none
 
@@ -85,7 +80,7 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: "POST"
+  * Method: POST
   * URL: /api/session
   * Headers:
     * Content-Type: application/json
@@ -152,8 +147,8 @@ user's information.
 
 * Require Authentication: false
 * Request
-  * Method: "POST"
-  * URL: "/api/users"
+  * Method: POST
+  * URL: /api/users
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -162,8 +157,8 @@ user's information.
     {
       "firstName": "John",
       "lastName": "Smith",
-      "username": "JohnSmith",
       "email": "john.smith@gmail.com",
+      "username": "JohnSmith",
       "password": "secret password"
     }
     ```
@@ -179,8 +174,8 @@ user's information.
       "id": 1,
       "firstName": "John",
       "lastName": "Smith",
-      "username": "JohnSmith",
       "email": "john.smith@gmail.com",
+      "username": "JohnSmith",
       "token": ""
     }
     ```
@@ -236,16 +231,16 @@ user's information.
     }
     ```
 
-## SONGS
+## SPOTS
 
-### Get all Songs
+### Get all Spots
 
-Returns all the songs.
+Returns all the spots.
 
 * Require Authentication: false
 * Request
-  * Method: "GET"
-  * URL: "/api/songs"
+  * Method: GET
+  * URL: /api/spots
   * Body: none
 
 * Successful Response
@@ -256,30 +251,36 @@ Returns all the songs.
 
     ```json
     {
-      "Songs": [
+      "Spots": [
         {
           "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Yesterday",
-          "description": "A song about the past.",
-          "url": "audio url",
+          "ownerId": 1,
+          "address": "123 Disney Lane",
+          "city": "San Francisco",
+          "state": "California",
+          "country": "United States of America",
+          "lat": 37.7645358,
+          "lng": -122.4730327,
+          "name": "App Academy",
+          "description": "Place where web developers are created",
+          "price": 123,
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
+          "avgRating": 4.5,
           "previewImage": "image url"
         }
       ]
     }
     ```
 
-### Get all Songs created by the Current User
+### Get all Spots owned by the Current User
 
-Returns all the songs created by the current user.
+Returns all the spots owned (created) by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: "GET"
-  * URL: "/api/song/current"
+  * Method: GET
+  * URL: /api/spots/current
   * Body: none
 
 * Successful Response
@@ -290,77 +291,36 @@ Returns all the songs created by the current user.
 
     ```json
     {
-      "Songs": [
+      "Spots": [
         {
           "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Yesterday",
-          "description": "A song about the past.",
-          "url": "audio url",
+          "ownerId": 1,
+          "address": "123 Disney Lane",
+          "city": "San Francisco",
+          "state": "California",
+          "country": "United States of America",
+          "lat": 37.7645358,
+          "lng": -122.4730327,
+          "name": "App Academy",
+          "description": "Place where web developers are created",
+          "price": 123,
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
+          "avgRating": 4.5,
           "previewImage": "image url"
         }
       ]
     }
     ```
 
-### Get all Songs of an Artist from an id
+### Get details of a Spot from an id
 
-Returns all the songs created by the specified artist.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/artist/:artistId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Songs": [
-        {
-          "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Yesterday",
-          "description": "A song about the past.",
-          "url": "audio url",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Artist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Get details of a Song from an id
-
-Returns the details of a song specified by its id.
+Returns the details of a spot specified by its id.
 
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /api/song/:songId
+  * URL: /api/spots/:spotId
   * Body: none
 
 * Successful Response
@@ -372,28 +332,41 @@ Returns the details of a song specified by its id.
     ```json
     {
       "id": 1,
-      "userId": 1,
-      "albumId": 1,
-      "title": "Yesterday",
-      "description": "A song about the past.",
-      "url": "audio url",
+      "ownerId": 1,
+      "address": "123 Disney Lane",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States of America",
+      "lat": 37.7645358,
+      "lng": -122.4730327,
+      "name": "App Academy",
+      "description": "Place where web developers are created",
+      "price": 123,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url",
-      "Artist": {
+      "updatedAt": "2021-11-19 20:39:36" ,
+      "numReviews": 5,
+      "avgStarRating": 4.5,
+      "SpotImages": [
+        {
+          "id": 1,
+          "url": "image url",
+          "preview": true
+        },
+        {
+          "id": 2,
+          "url": "image url",
+          "preview": false
+        }
+      ],
+      "Owner": {
         "id": 1,
-        "username": "JohnSmith",
-        "previewImage": "image url"
-      },
-      "Album": {
-        "id": 1,
-        "title": "Time",
-        "previewImage": "image url"
+        "firstName": "John",
+        "lastName": "Smith"
       }
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
+* Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -401,42 +374,34 @@ Returns the details of a song specified by its id.
 
     ```json
     {
-      "message": "Song couldn't be found",
+      "message": "Spot couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Create a Song
+### Create a Spot
 
-Creates and returns a new song with or without an album.
+Creates and returns a new spot.
 
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /api/song
+  * URL: /api/spots
   * Headers:
     * Content-Type: application/json
-  * Body without an album:
+  * Body:
 
     ```json
     {
-      "title": "Yesterday",
-      "description": "A song about the past.",
-      "url": "audio url",
-      "imageUrl": "image url",
-      "albumId": null
-    }
-    ```
-
-  * Body with an album:
-
-    ```json
-    {
-      "title": "Tomorrow",
-      "description": "A song about the future.",
-      "url": "audio url",
-      "imageUrl": "image url",
-      "albumId": 1
+      "address": "123 Disney Lane",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States of America",
+      "lat": 37.7645358,
+      "lng": -122.4730327,
+      "name": "App Academy",
+      "description": "Place where web developers are created",
+      "price": 123
     }
     ```
 
@@ -449,14 +414,18 @@ Creates and returns a new song with or without an album.
     ```json
     {
       "id": 1,
-      "userId": 1,
-      "albumId": null,
-      "title": "Yesterday",
-      "description": "A song about the past.",
-      "url": "audio url",
+      "ownerId": 1,
+      "address": "123 Disney Lane",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States of America",
+      "lat": 37.7645358,
+      "lng": -122.4730327,
+      "name": "App Academy",
+      "description": "Place where web developers are created",
+      "price": 123,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url"
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
@@ -471,46 +440,36 @@ Creates and returns a new song with or without an album.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "title": "Song title is required",
-        "url": "Audio is required"
+        "address": "Street address is required",
+        "city": "City is required",
+        "state": "State is required",
+        "country": "Country is required",
+        "lat": "Latitude is not valid",
+        "lng": "Longitude is not valid",
+        "name": "Name must be less than 50 characters",
+        "description": "Description is required",
+        "price": "Price per day is required"
       }
     }
     ```
 
-* Error response: Couldn't find an Album with the specified albumId if albumId
-  is not null
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+### Add an Image to a Spot based on the Spot's id
 
-    ```json
-    {
-      "message": "Album couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Edit a Song
-
-Updates and returns an existing song.
+Create and return a new image for a spot specified by id.
 
 * Require Authentication: true
-* Require proper authorization: Song must belong to the current user
+* Require proper authorization: Spot must belong to the current user
 * Request
-  * Method: PUT
-  * URL: /api/song/songId
+  * Method: POST
+  * URL: /api/spots/:spotId/images
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "title": "Yesterday",
-      "description": "A song about the past.",
-      "url": "audio url",
-      "imageUrl": "image url",
-      "albumId": null
+      "url": "image url",
+      "preview": true
     }
     ```
 
@@ -523,14 +482,72 @@ Updates and returns an existing song.
     ```json
     {
       "id": 1,
-      "userId": 1,
-      "albumId": null,
-      "title": "Yesterday",
-      "description": "A song about the past.",
-      "url": "audio url",
+      "url": "image url",
+      "preview": true
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+### Edit a Spot
+
+Updates and returns an existing spot.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/spots/:spotId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "address": "123 Disney Lane",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States of America",
+      "lat": 37.7645358,
+      "lng": -122.4730327,
+      "name": "App Academy",
+      "description": "Place where web developers are created",
+      "price": 123
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "ownerId": 1,
+      "address": "123 Disney Lane",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "United States of America",
+      "lat": 37.7645358,
+      "lng": -122.4730327,
+      "name": "App Academy",
+      "description": "Place where web developers are created",
+      "price": 123,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 20:00:00",
-      "previewImage": "image url"
+      "updatedAt": "2021-11-20 10:06:40"
     }
     ```
 
@@ -545,13 +562,20 @@ Updates and returns an existing song.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "title": "Song title is required",
-        "url": "Audio is required"
+        "address": "Street address is required",
+        "city": "City is required",
+        "state": "State is required",
+        "country": "Country is required",
+        "lat": "Latitude is not valid",
+        "lng": "Longitude is not valid",
+        "name": "Name must be less than 50 characters",
+        "description": "Description is required",
+        "price": "Price per day is required"
       }
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
+* Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -559,20 +583,20 @@ Updates and returns an existing song.
 
     ```json
     {
-      "message": "Song couldn't be found",
+      "message": "Spot couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Delete a Song
+### Delete a Spot
 
-Deletes an existing song.
+Deletes an existing spot.
 
 * Require Authentication: true
-* Require proper authorization: Song must belong to the current user
+* Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/song/songId
+  * URL: /api/spots/:spotId
   * Body: none
 
 * Successful Response
@@ -588,7 +612,7 @@ Deletes an existing song.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
+* Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -596,332 +620,21 @@ Deletes an existing song.
 
     ```json
     {
-      "message": "Song couldn't be found",
+      "message": "Spot couldn't be found",
       "statusCode": 404
     }
     ```
 
-## PLAYLISTS
+## REVIEWS
 
-### Get all Playlists of an Artist from an id
+### Get all Reviews of the Current User
 
-Returns all the playlists created by the specified artist.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/playlist/:artistId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Playlists": [
-        {
-          "id": 1,
-          "userId": 1,
-          "name": "Current Favorites",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Artist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Create a Playlist
-
-Creates and returns a new playlist.
-
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /api/playlist
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "name": "Current Favorites",
-      "imageUrl": "image url"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "name": "Current Favorites",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url"
-    }
-    ```
-
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation Error",
-      "statusCode": 400,
-      "errors": {
-        "name": "Playlist name is required"
-      }
-    }
-    ```
-
-### Add a Song to a Playlist based on the Playlists's id
-
-Add a song to a playlist specified by the playlist's id.
-
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: POST
-  * URL: /api/playlist/:playlistId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "songId": 1
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "playlistId": 1,
-      "songId": 1
-    }
-    ```
-
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Playlist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Song couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Get details of a Playlist from an id
-
-Returns the details of a playlist specified by its id.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/playlist/:playlistId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "name": "Current Favorites",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url",
-      "Songs": [
-        {
-          "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Yesterday",
-          "description": "A song about the past.",
-          "url": "audio url",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Playlist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Edit a Playlist
-
-Updates and returns an existing playlist.
-
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /api/session/playlist/:playlistId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "name": "Current Favorites",
-      "imageUrl": "image url"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "name": "Current Favorites",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 20:00:00",
-      "previewImage": "image url"
-    }
-    ```
-
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation Error",
-      "statusCode": 400,
-      "errors": {
-        "name": "Playlist name is required"
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Playlist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Delete a Playlist
-
-Deletes an existing playlist.
-
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /api/session/playlist/:playlistId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Playlist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Get all Playlists created by the Current User
-
-Returns all the playlists created by the current user.
+Returns all the reviews written by the current user.
 
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/session/playlist/
+  * URL: /api/reviews/current
   * Body: none
 
 * Successful Response
@@ -932,57 +645,88 @@ Returns all the playlists created by the current user.
 
     ```json
     {
-      "Playlists":[
+      "Reviews": [
         {
           "id": 1,
           "userId": 1,
-          "name": "Current Favorites",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-## COMMENTS
-
-### Get all Comments by a Song's id
-
-Returns all the comments that belong to a song specified by id.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/song/:songId/comments
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Comments": [
-        {
-          "id": 1,
-          "userId": 1,
-          "songId": 1,
-          "body": "I love this song!",
+          "spotId": 1,
+          "review": "This was an awesome spot!",
+          "stars": 5,
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36" ,
           "User": {
             "id": 1,
-            "username": "JohnSmith"
+            "firstName": "John",
+            "lastName": "Smith"
           },
+          "Spot": {
+            "id": 1,
+            "ownerId": 1,
+            "address": "123 Disney Lane",
+            "city": "San Francisco",
+            "state": "California",
+            "country": "United States of America",
+            "lat": 37.7645358,
+            "lng": -122.4730327,
+            "name": "App Academy",
+            "price": 123,
+            "previewImage": "image url"
+          },
+          "ReviewImages": [
+            {
+              "id": 1,
+              "url": "image url"
+            }
+          ]
         }
       ]
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
+### Get all Reviews by a Spot's id
+
+Returns all the reviews that belong to a spot specified by id.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/spots/:spotId/reviews
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Reviews": [
+        {
+          "id": 1,
+          "userId": 1,
+          "spotId": 1,
+          "review": "This was an awesome spot!",
+          "stars": 5,
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36" ,
+          "User": {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Smith"
+          },
+          "ReviewImages": [
+            {
+              "id": 1,
+              "url": "image url"
+            }
+          ],
+        }
+      ]
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -990,364 +734,27 @@ Returns all the comments that belong to a song specified by id.
 
     ```json
     {
-      "message": "Song couldn't be found",
+      "message": "Spot couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Create a Comment for a Song based on the Song's id
+### Create a Review for a Spot based on the Spot's id
 
-Create and return a new comment for a song specified by id.
+Create and return a new review for a spot specified by id.
 
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /api/song/:songId/comments
+  * URL: /api/spots/:spotId/reviews
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "body": "I love this song!"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "songId": 1,
-      "body": "I love this song!",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36" ,
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "body": "Comment body text is required"
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Song couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Edit a Comment
-
-Update and return an existing comment.
-
-* Require Authentication: true
-* Require proper authorization: Comment must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /api/song/comment/:userId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "body": "I love this song!"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "songId": 1,
-      "body": "I love this song!",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 20:00:00"
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "body": "Comment body text is required",
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Comment with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Comment couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Delete a Comment
-
-Delete an existing comment.
-
-* Require Authentication: true
-* Require proper authorization: Comment must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /api/song/comment/:userId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Comment with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Comment couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-## ALBUMS
-
-### Get all Albums
-
-Returns all the Albums.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/album
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Albums": [
-        {
-          "id": 1,
-          "userId": 1,
-          "title": "Time",
-          "description": "An album about time.",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-### Get all Albums created by the Current User
-
-Returns all the Albums created by the current user.
-
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /api/albums/:userId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Albums":[
-        {
-          "id": 1,
-          "userId": 1,
-          "title": "Time",
-          "description": "An album about time.",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-### Get all Albums of an Artist from an id
-
-Returns all the albums created by the specified artist.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/album/:artistId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "Albums": [
-        {
-          "id": 1,
-          "userId": 1,
-          "title": "Time",
-          "description": "An album about time.",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Artist couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Get details of an Album from an id
-
-Returns the details of an album specified by its id.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/album/:albumId
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "userId": 1,
-      "title": "Time",
-      "description": "An album about time.",
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url",
-      "Artist": {
-        "id": 1,
-        "username": "JohnSmith",
-        "previewImage": "image url"
-      },
-      "Songs": [
-        {
-          "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Tomorrow",
-          "description": "A song about the future.",
-          "url": "audio url",
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
-          "previewImage": "image url"
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find an Album with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Album couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Create an Album
-
-Creates and returns a new album.
-
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /api/album
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "title": "Time",
-      "description": "An album about time.",
-      "imageUrl": "image url"
+      "review": "This was an awesome spot!",
+      "stars": 5,
     }
     ```
 
@@ -1361,15 +768,15 @@ Creates and returns a new album.
     {
       "id": 1,
       "userId": 1,
-      "title": "Time",
-      "description": "An album about time.",
+      "spotId": 1,
+      "review": "This was an awesome spot!",
+      "stars": 5,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36",
-      "previewImage": "image url"
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
-* Error Response: Body validation error
+* Error Response: Body validation errors
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
@@ -1377,32 +784,117 @@ Creates and returns a new album.
 
     ```json
     {
-      "message": "Validation Error",
+      "message": "Validation error",
       "statusCode": 400,
       "errors": {
-        "title": "Album title is required"
+        "review": "Review text is required",
+        "stars": "Stars must be an integer from 1 to 5",
       }
     }
     ```
 
-### Edit an Album
-
-Updates and returns an existing album.
-
-* Require Authentication: true
-* Require proper authorization: Album must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /api/album/:albumId
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
-      "title": "Time",
-      "description": "An album about time.",
-      "imageUrl": "image url"
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+* Error response: Review from the current user already exists for the Spot
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "User already has a review for this spot",
+      "statusCode": 403
+    }
+    ```
+
+### Add an Image to a Review based on the Review's id
+
+Create and return a new image for a review specified by id.
+
+* Require Authentication: true
+* Require proper authorization: Review must belong to the current user
+* Request
+  * Method: POST
+  * URL: /api/reviews/:reviewId/images
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "url": "image url"
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "url": "image url"
+    }
+    ```
+
+* Error response: Couldn't find a Review with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Review couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+* Error response: Cannot add any more images because there is a maximum of 10
+  images per resource
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Maximum number of images for this resource was reached",
+      "statusCode": 403
+    }
+    ```
+
+### Edit a Review
+
+Update and return an existing review.
+
+* Require Authentication: true
+* Require proper authorization: Review must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/reviews/:reviewId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "review": "This was an awesome spot!",
+      "stars": 5,
     }
     ```
 
@@ -1416,15 +908,15 @@ Updates and returns an existing album.
     {
       "id": 1,
       "userId": 1,
-      "title": "Time",
-      "description": "An album about time.",
+      "spotId": 1,
+      "review": "This was an awesome spot!",
+      "stars": 5,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 20:00:00",
-      "previewImage": "image url"
+      "updatedAt": "2021-11-20 10:06:40"
     }
     ```
 
-* Error Response: Body validation error
+* Error Response: Body validation errors
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
@@ -1432,15 +924,16 @@ Updates and returns an existing album.
 
     ```json
     {
-      "message": "Validation Error",
+      "message": "Validation error",
       "statusCode": 400,
       "errors": {
-        "title": "Album title is required"
+        "review": "Review text is required",
+        "stars": "Stars must be an integer from 1 to 5",
       }
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
+* Error response: Couldn't find a Review with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -1448,20 +941,20 @@ Updates and returns an existing album.
 
     ```json
     {
-      "message": "Album couldn't be found",
+      "message": "Review couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Delete an Album
+### Delete a Review
 
-Deletes an existing album.
+Delete an existing review.
 
 * Require Authentication: true
-* Require proper authorization: Album must belong to the current user
+* Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/album/:albumId
+  * URL: /api/reviews/:reviewId
   * Body: none
 
 * Successful Response
@@ -1477,7 +970,7 @@ Deletes an existing album.
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
+* Error response: Couldn't find a Review with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -1485,22 +978,143 @@ Deletes an existing album.
 
     ```json
     {
-      "message": "Album couldn't be found",
+      "message": "Review couldn't be found",
       "statusCode": 404
     }
     ```
 
-## ARTISTS
+## BOOKINGS
 
-### Get details of an Artist from an id
+### Get all of the Current User's Bookings
 
-Returns the details of an artist specified by their id.
+Return all the bookings that the current user has made.
 
-* Require Authentication: false
+* Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/artist/:artistId
+  * URL: /api/bookings/current
   * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Bookings": [
+        {
+          "id": 1,
+          "spotId": 1,
+          "Spot": {
+            "id": 1,
+            "ownerId": 1,
+            "address": "123 Disney Lane",
+            "city": "San Francisco",
+            "state": "California",
+            "country": "United States of America",
+            "lat": 37.7645358,
+            "lng": -122.4730327,
+            "name": "App Academy",
+            "price": 123,
+            "previewImage": "image url"
+          },
+          "userId": 2,
+          "startDate": "2021-11-19",
+          "endDate": "2021-11-20",
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36"
+        }
+      ]
+    }
+    ```
+
+### Get all Bookings for a Spot based on the Spot's id
+
+Return all the bookings for a spot specified by id.
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/spots/:spotId/bookings
+  * Body: none
+
+* Successful Response: If you ARE NOT the owner of the spot.
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Bookings": [
+        {
+          "spotId": 1,
+          "startDate": "2021-11-19",
+          "endDate": "2021-11-20"
+        }
+      ]
+    }
+    ```
+
+* Successful Response: If you ARE the owner of the spot.
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Bookings": [
+        {
+          "User": {
+            "id": 2,
+            "firstName": "John",
+            "lastName": "Smith"
+          },
+          "id": 1,
+          "spotId": 1,
+          "userId": 2,
+          "startDate": "2021-11-19",
+          "endDate": "2021-11-20",
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36"
+        }
+      ]
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+### Create a Booking from a Spot based on the Spot's id
+
+Create and return a new booking from a spot specified by id.
+
+* Require Authentication: true
+* Require proper authorization: Spot must NOT belong to the current user
+* Request
+  * Method: POST
+  * URL: /api/spots/:spotId/bookings
+  * Body:
+
+    ```json
+    {
+      "startDate": "2021-11-19",
+      "endDate": "2021-11-20"
+    }
+    ```
 
 * Successful Response
   * Status Code: 200
@@ -1511,14 +1125,32 @@ Returns the details of an artist specified by their id.
     ```json
     {
       "id": 1,
-      "username": "JohnSmith",
-      "totalSongs": 10,
-      "totalAlbums": 2,
-      "previewImage": "image url"
+      "spotId": 1,
+      "userId": 2,
+      "startDate": "2021-11-19",
+      "endDate": "2021-11-20",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
-* Error response: Couldn't find an Artists with the specified id
+* Error response: Body validation errors
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "endDate": "endDate cannot be on or before startDate"
+      }
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
   * Headers:
     * Content-Type: application/json
@@ -1526,24 +1158,135 @@ Returns the details of an artist specified by their id.
 
     ```json
     {
-      "message": "Artist couldn't be found",
+      "message": "Spot couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Add Query Filters to Get All Songs
+* Error response: Booking conflict
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
 
-Return songs filtered by query parameters.
+    ```json
+    {
+      "message": "Sorry, this spot is already booked for the specified dates",
+      "statusCode": 403,
+      "errors": {
+        "startDate": "Start date conflicts with an existing booking",
+        "endDate": "End date conflicts with an existing booking"
+      }
+    }
+    ```
 
-* Require Authentication: false
+### Edit a Booking
+
+Update and return an existing booking.
+
+* Require Authentication: true
+* Require proper authorization: Booking must belong to the current user
 * Request
-  * Method: GET
-  * URL: /api/song
-  * Query Parameters
-    * page: integer, minimum: 0, maximum: 10, default: 0
-    * size: integer, minimum: 0, maximum: 20, default: 20
-    * title: string, optional
-    * createdAt: string, optional
+  * Method: PUT
+  * URL: /api/bookings/:bookingId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "startDate": "2021-11-19",
+      "endDate": "2021-11-20"
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "spotId": 1,
+      "userId": 2,
+      "startDate": "2021-11-19",
+      "endDate": "2021-11-20",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-20 10:06:40"
+    }
+    ```
+
+* Error response: Body validation errors
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "endDate": "endDate cannot come before startDate"
+      }
+    }
+    ```
+
+* Error response: Couldn't find a Booking with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Booking couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+* Error response: Can't edit a booking that's past the end date
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Past bookings can't be modified",
+      "statusCode": 403
+    }
+    ```
+
+* Error response: Booking conflict
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Sorry, this spot is already booked for the specified dates",
+      "statusCode": 403,
+      "errors": {
+        "startDate": "Start date conflicts with an existing booking",
+        "endDate": "End date conflicts with an existing booking"
+      }
+    }
+    ```
+
+### Delete a Booking
+
+Delete an existing booking.
+
+* Require Authentication: true
+* Require proper authorization: Booking must belong to the current user or the
+  Spot must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/bookings/:bookingId
   * Body: none
 
 * Successful Response
@@ -1554,14 +1297,153 @@ Return songs filtered by query parameters.
 
     ```json
     {
-      "Songs":[
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+* Error response: Couldn't find a Booking with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Booking couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+* Error response: Bookings that have been started can't be deleted
+  * Status Code: 403
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Bookings that have been started can't be deleted",
+      "statusCode": 403
+    }
+    ```
+
+## IMAGES
+
+### Delete a Spot Image
+
+Delete an existing image for a Spot.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/spot-images/:imageId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+* Error response: Couldn't find a Spot Image with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Spot Image couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+### Delete a Review Image
+
+Delete an existing image for a Review.
+
+* Require Authentication: true
+* Require proper authorization: Review must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/review-images/:imageId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+* Error response: Couldn't find a Review Image with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Review Image couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+## Add Query Filters to Get All Spots
+
+Return spots filtered by query parameters.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/spots
+  * Query Parameters
+    * page: integer, minimum: 1, maximum: 10, default: 1
+    * size: integer, minimum: 1, maximum: 20, default: 20
+    * minLat: decimal, optional
+    * maxLat: decimal, optional
+    * minLng: decimal, optional
+    * maxLng: decimal, optional
+    * minPrice: decimal, optional, minimum: 0
+    * maxPrice: decimal, optional, minimum: 0
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Spots":[
         {
           "id": 1,
-          "userId": 1,
-          "albumId": 1,
-          "title": "Yesterday",
-          "description": "A song about the past.",
-          "url": "audio url",
+          "ownerId": 1,
+          "address": "123 Disney Lane",
+          "city": "San Francisco",
+          "state": "California",
+          "country": "United States of America",
+          "lat": 37.7645358,
+          "lng": -122.4730327,
+          "name": "App Academy",
+          "description": "Place where web developers are created",
+          "price": 123,
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
           "previewImage": "image url"
@@ -1583,10 +1465,14 @@ Return songs filtered by query parameters.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "page": "Page must be greater than or equal to 0",
-        "size": "Size must be greater than or equal to 0",
-        "createdAt": "CreatedAt is invalid"
+        "page": "Page must be greater than or equal to 1",
+        "size": "Size must be greater than or equal to 1",
+        "maxLat": "Maximum latitude is invalid",
+        "minLat": "Minimum latitude is invalid",
+        "minLng": "Maximum longitude is invalid",
+        "maxLng": "Minimum longitude is invalid",
+        "minPrice": "Maximum price must be greater than or equal to 0",
+        "maxPrice": "Minimum price must be greater than or equal to 0"
       }
     }
     ```
-# Api-Project-Air-BnB
