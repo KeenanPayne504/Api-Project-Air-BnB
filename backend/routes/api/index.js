@@ -3,10 +3,10 @@ const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const spotsRouter = require('./spots.js')
-const reviewsRouter = require('./reviews')
-const bookingsRouter = require('./bookings')
-const spotImageRouter = require('./spot-images')
-const reviewImageRouter = require('./review-images')
+const reviewsRouter = require('./reviews.js')
+const bookingsRouter = require('./bookings.js')
+const spotImageRouter = require('./spot-images.js')
+const reviewImageRouter = require('./review-images.js')
 const { restoreUser } = require("../../utils/auth.js");
 
 
