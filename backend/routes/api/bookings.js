@@ -4,7 +4,7 @@ const { requireAuth } = require("../../utils/auth");
 const { Op } = require("sequelize");
 const router = express.Router();
 
-//GEt current user bookings
+//GEt current user date
 router.get("/current", requireAuth, async (req, res) => {
     const userId = req.user.id
   const currentBooking = await Booking.findAll({

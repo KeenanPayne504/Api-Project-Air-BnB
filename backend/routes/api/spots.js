@@ -17,7 +17,6 @@ const router = express.Router();
 
 
 ///GET ALL SPOTS
-//Part 1
 router.get("/", async (req, res) => {
    let { page, size } = req.query;
    page = parseInt(page)
