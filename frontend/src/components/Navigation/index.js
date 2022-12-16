@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
     <div className="NavBarContainer">
       <div className="NavBar">
         <NavLink exact to="/">
-          Home
+          Gensou BnB
         </NavLink>
         <div className="NavRightSide">{isLoaded && sessionLinks}</div>
       </div>
