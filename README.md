@@ -1,6 +1,6 @@
 # GensouBnB
 GensouBnB is a website clone, inspired by Airbnb. GensouBnB can be used to rent Houses/Mansions and Parks to host special events.
-Community Members can View locations, leave a review for a location or field, or host thier own house or field for special events.
+Community Members can View locations, leave a review for a location or field, or host their own house or field for occasions.
 
 Live site Link: [GensouBnB](https://gensou-bnb.onrender.com)
 
@@ -31,13 +31,13 @@ Please see all links below for Github Wiki:
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
-![Heroku](https://img.shields.io/badge/Render-H-green)
+![Render](https://img.shields.io/badge/Render-H-green)
 
 # Features
 You will be able to view all spots
 ![image](https://user-images.githubusercontent.com/102884954/208383888-3406a277-e5be-4e60-bb75-f7b889287b60.png)
 
-You will be able to log in as a Demo-User to test all features.
+You will be able to log in to test all features.
 ![image](https://user-images.githubusercontent.com/102884954/208384706-c22eabe5-aa4f-49df-a7b6-4c18bc51052d.png)
 
 You will able to create spots
