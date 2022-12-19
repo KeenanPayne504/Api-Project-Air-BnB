@@ -35,16 +35,16 @@ Please see all links below for Github Wiki:
 
 # Features
 You will be able to view all spots
-[image](https://user-images.githubusercontent.com/102884954/208383888-3406a277-e5be-4e60-bb75-f7b889287b60.png)
+![image](https://user-images.githubusercontent.com/102884954/208383888-3406a277-e5be-4e60-bb75-f7b889287b60.png)
 
 You will be able to log in as a Demo-User to test all features.
-[image](https://user-images.githubusercontent.com/102884954/208384706-c22eabe5-aa4f-49df-a7b6-4c18bc51052d.png)
+![image](https://user-images.githubusercontent.com/102884954/208384706-c22eabe5-aa4f-49df-a7b6-4c18bc51052d.png)
 
 You will able to create spots
-[image](https://user-images.githubusercontent.com/102884954/208384794-bec3f105-1c2d-4300-be80-08852deda1f6.png)
+![image](https://user-images.githubusercontent.com/102884954/208384794-bec3f105-1c2d-4300-be80-08852deda1f6.png)
 
 You will be able to edit spots
-[image](https://user-images.githubusercontent.com/102884954/208384890-30b76212-6092-4740-a3e4-5dcf15f50aa1.png)
+![image](https://user-images.githubusercontent.com/102884954/208384890-30b76212-6092-4740-a3e4-5dcf15f50aa1.png)
 
 You will be able to view and delete reviews.
-[image](https://user-images.githubusercontent.com/102884954/208385115-f9f6fa27-8f5b-4c4d-a24e-71f6d1ac85ba.png)
+![image](https://user-images.githubusercontent.com/102884954/208385115-f9f6fa27-8f5b-4c4d-a24e-71f6d1ac85ba.png)
