@@ -29,7 +29,9 @@ const CreateReviewForm = () => {
         if(!user) errors.push("Please Log In")
         if(user === reviews.userId)errors.push("User already has a review for this spot")
         if(stars > 5 || stars < 1)errors.push("Stars must be Between 1 and 5")
+        if(isNaN(stars))errors.push("Stars Must be a Number")
         if(!review) errors.push("Please write a Review")
+        if(review.length < 2)errors.push("Minimum two Characters")
 
 
         setValidationErrors(errors)
@@ -88,7 +90,7 @@ const CreateReviewForm = () => {
               <div className="Review-inputs">
                 <input
                   className="stars-field"
-                  type="number"
+                  type="text"
                   placeholder="Stars"
                   value={stars}
                   onChange={updateStars}
