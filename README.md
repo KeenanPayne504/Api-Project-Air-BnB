@@ -7,11 +7,11 @@ Live site Link: [GensouBnB](https://gensou-bnb.onrender.com)
 
 Please see all links below for Github Wiki:
 
-[Feature List]()
+[Feature List](https://github.com/KeenanPayne504/Api-Project-Air-BnB/wiki/Feature-list)
 
-[DataBase Schema]()
+[DataBase Schema](https://github.com/KeenanPayne504/Api-Project-Air-BnB/wiki/Database-Schema)
 
-[API Routes]()
+[API Routes](https://github.com/KeenanPayne504/Api-Project-Air-BnB/wiki/API-Documentation)
 
 [Redux Store State Shape](https://github.com/KeenanPayne504/Api-Project-Air-BnB/wiki/Redux-Store-Shape)
 
