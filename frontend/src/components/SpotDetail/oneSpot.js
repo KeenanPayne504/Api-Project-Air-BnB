@@ -17,7 +17,7 @@ const SpotDetail = () => {
 
   const spot = useSelector((state) => state.spots[spotId]);
 
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session?.user);
   const review = useSelector((state) => state.reviews);
 
 

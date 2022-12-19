@@ -133,9 +133,6 @@ router.get("/:spotId", async (req, res) => {
       { model: User, as: "Owner", attributes: ["id", "firstName", "lastName"] },
       { model: SpotImage, attributes: ["id", "url", "preview"] },
     ],
-    where: {
-      ownerId: req.user.id,
-    },
   });
     console.log("======================", )
   if (!oneSpot) {
