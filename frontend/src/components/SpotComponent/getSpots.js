@@ -8,6 +8,7 @@ import './getSpots.css'
 
 
 
+
 const SpotComponent = () =>{
     const dispatch = useDispatch();
     
@@ -23,16 +24,20 @@ const SpotComponent = () =>{
         return null
     }
 
-    const spotlist = spots.map((spot) =>(<SpotCards key={spot.id} spot={spot} />))
+    const spotlist = spots.map((spot) => (
+      <div key={spot.id}>
+        <SpotCards key={spot.id} spot={spot} />
+      </div>
+    ));
 
     return (
-        
-        <div >
-            <div className='cards'>
-            {spotlist}
-            </div>
+      <div className="divcontainer">
+        <div className="cards">
+          {spotlist}
         </div>
-    )
+        ;
+      </div>
+    );
 }
 
 export default SpotComponent

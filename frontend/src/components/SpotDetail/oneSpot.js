@@ -7,6 +7,7 @@ import { deleteSpot } from "../../store/Spots";
 import { useHistory } from "react-router-dom";
 import "./spotdetail.css";
 import Reviews from "../ReviewComponent/Review";
+
 import { getAllReviews } from "../../store/Reviews";
 
 const SpotDetail = () => {
@@ -15,9 +16,10 @@ const SpotDetail = () => {
   const dispatch = useDispatch();
 
   const spot = useSelector((state) => state.spots[spotId]);
+
   const user = useSelector((state) => state.session.user);
   const review = useSelector((state) => state.reviews);
- 
+ console.log()
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -26,65 +28,95 @@ const SpotDetail = () => {
   };
 
   useEffect(() => {
-   
+    dispatch(getSpotId(spotId))
     dispatch(getAllReviews(spotId));
 
-  }, [dispatch, spot]);
+  }, [dispatch, spotId]);
 
-  if (!spot) {
-    return <h1>loading</h1>;
+  if (!spot || !spot.SpotImages) {
+    return <h1>Loading</h1>;
   }
+
+const ownerUser = (user && user.id === spot.ownerId)
+
+
   return (
-    <div className="MainDiv">
+    <div key={spot} className="MainDiv">
       <div>
-        <h1>Spot Detail</h1>
+        <h1>{spot?.name}</h1>
+        <h4 className="fas fa-solid fa-star">
+          {" "}
+          &nbsp;
+          {spot?.avgRating} &nbsp;<span className="space">·</span> {spot?.city},{" "}
+          {spot?.state}, {spot?.country}
+        </h4>
+
         <div>
-          <img className="spotImage" src={spot?.previewImage} alt="spotimage" />
+          {spot.SpotImages.map((image) => {
+            return (
+              <div key={image.id}>
+                <img className="spotImage" src={image.url} alt="spot Homes" />
+              </div>
+            );
+          })}
         </div>
 
         <div className="rightDiv">
-          <div>
-            <p>{spot?.ownerId}</p>
-            <p>{spot?.address}</p>
-            <p>{spot?.city}</p>
-            <p>{spot?.state}</p>
-            <p>{spot?.country}</p>
-            <p>{spot?.lat}</p>
-            <p>{spot?.lng}</p>
-            <p>{spot?.name}</p>
-            <p>{spot?.description}</p>
-            <p>{spot?.price}</p>
-            <p>{spot?.avgRating}</p>
+          <div className="textBlock">
+            <div className="hosteddiv"> HOSTED BY: {spot?.Owner.firstName} </div>
+            <div className="descriptiondiv">
+              Description: {spot?.description}
+            </div>
+
+            <div className="cancellation">FREE CANCELLATION FOR 48 HOURS</div>
+            <div className="para">
+              <div className="parapadding">
+                Every booking includes free protection from Host cancellations,
+                listing inaccuracies, and other issues like trouble checking in.
+              </div>
+              <hr className="borderBox"></hr>
+            </div>
           </div>
 
           <div className="reviewcard">
-            <div>
-              <p>{spot?.price} night</p>
-              <p>{spot?.avgRating}</p>
+            <div className="pricediv">
+              <div>
+                <span className="BigPrice">${spot?.price}</span> night
+              </div>
+              <div className="fas fa-solid fa-star">
+                &nbsp; {spot?.avgRating}
+              </div>
             </div>
 
-            {user && (
-              <div>
-                <button onClick={(e) => handleDelete(e)}>
+            {ownerUser && (
+              <div key={spot} className="twoBtn">
+                <button className="deleteBtn" onClick={(e) => handleDelete(e)}>
                   Delete Your Spot
                 </button>
+                &nbsp;
                 <NavLink to={`/spots/${spot.id}/edit`}>
-                  <button>click me to edit</button>
+                  <button className="editsbtn">click me to edit</button>
                 </NavLink>
-                <div>
-                  <NavLink to={`/spots/${spot.id}/reviews`}>
-                    <button>Leave a Review</button>
-                  </NavLink>
-                </div>
               </div>
             )}
+            <div className="priceText">Available Soon</div>
+            <div className="priceText">Cleaning Fee: $100</div>
+            <div>
+              {!ownerUser && (
+                <div key={spot}>
+                  <NavLink to={`/spots/${spot.id}/reviews`}>
+                    <button className="review-btn">Leave a Review</button>
+                  </NavLink>
+                </div>
+              )}
+              <div className="total-text">Total:$450.36</div>
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <div>
-          <Reviews key={review} review={review} />
-        </div>
+
+      <div className="reviewSpace">
+        <Reviews key={review} review={review} />
       </div>
     </div>
   );

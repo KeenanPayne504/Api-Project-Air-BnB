@@ -1,10 +1,194 @@
 .NavBar{
     display: flex;
+   
     justify-content: space-between;
-    border-bottom: 20px;
+    border-bottom: 0.5px solid;
+    border-color: lightgray;
+    min-width: 100%;
+
 }
 
 .btn{
-    margin-right: 60px;
-    margin: 20px;
+   
+  border-radius: 30px;
+  font-size: 20px;
+  height: 35px;
+  margin-top: 7px;
+  background-color: white;
+  border: none;
+  border-color: none;
+  
+  cursor: pointer;  
+}
+.btn:hover{
+    background-color: #DCDCDC;
+}
+
+.userbtn{
+  border-radius: 100px;
+  width: 95px;
+  height: 60px;
+  margin-right: 70px;
+  margin-left: 50px;
+  margin-top: 16px;
+  border-color: lightgray;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border-width: thin;
+}
+
+.userbtn:hover{
+    box-shadow: 0 1px 8px 0 gray, 0 1px 8px 0 gray
+}
+
+#left-icon{
+    color:gray;
+    margin-top: 22px;
+    margin-left: 15px;
+  
+}
+
+#right-icon{
+        color: #696969;
+        margin-top: 8px;
+        margin-left: 10px;
+      
+        
+}
+
+.rightdiv{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.beezyImg{
+    margin-top: 10px;
+    width: 250px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
+
+.profile-dropdown{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-indent: 50px;
+}
+.dropdiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.DONTMOVE{
+display: flex;
+position: absolute;
+right: 250px;
+top: 30px;
+flex-direction: row;
+}
+
+.dropDizzy{
+    border: 2px solid silver;
+    position: absolute;
+    top: 90px;
+    background-color: white;
+    right: 20px;
+    border-radius: 10px;
+    display: flex;
+    border-width: fit-content;
+    flex-direction: column;
+    padding-bottom: 10px;
+    width: 200px;
+}
+
+.droptext{
+    margin: 3px 0;
+    text-decoration: none;
+    width:198px;
+    padding-left: 3px;
+}
+.droptext:hover{
+    /* box-shadow: 0 2px 6px #DCDCDC; */
+    background-color: lightgray;
+}
+
+.linktext{
+    text-decoration: none;
+    color: black;
+    padding-left: 3px;
+    /* width: 250px; */
+}
+
+.stretch:hover{
+    background-color: lightgray;
+}
+
+.stretch{
+    width: 200px
+
+}
+
+.logoutbutton{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 200px;
+    text-align: left;
+    padding-left: 3px;
+}
+
+.logoutbutton:hover{
+    background-color: lightgray;
+}
+.helloUser{
+    margin-top: 8px;
+}
+
+.NavRightSide{
+    display: flex;
+    flex-direction: row;
+}
+
+.loginNav{
+    position:absolute;
+    left: 1250px;
+    top: 30px;
+    
+
+}
+
+.signupNav{
+    position: absolute;
+     right: 10px;
+     top: 30px;
+    
+}
+.loginbtn{
+    color: red;
+}
+
+.signupLnk{
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+
+.signupLnk:hover{
+    font-weight: bold;
+    background-color: #DCDCDC;
+   box-sizing: border-box;
+   border: none;
+    border-radius: 20px;
+   padding: 20px;
+   
+}
+
+.loginsignup{
+    display: flex;
+    flex-direction: column;
+   
 }
