@@ -12,22 +12,22 @@ module.exports = {
       [
         {
           spotId: 1,
-          url: "thispic.com",
+          url: "https://www.shutterstock.com/image-vector/illustration-simple-house-isolated-on-260nw-1937900650.jpg",
           preview: true,
         },
         {
           spotId: 2,
-          url: "thiiispic.com",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk1VndqNpPG5Fw0JJ0C1EQ7WgEYcCIJy909INFTobTsYStpPqmwKnE31xsc24joPYnsVQ&usqp=CAU",
           preview: true,
         },
         {
           spotId: 3,
-          url: "thatpic.com",
+          url: "https://www.shutterstock.com/image-vector/new-family-cottage-3d-house-260nw-1912514437.jpg",
           preview: true,
         },
         {
           spotId: 4,
-          url: "thaaaatpic.com",
+          url: "https://img.freepik.com/premium-vector/suburban-twostorey-house-exterior-with-balcony_8071-12316.jpg?w=2000",
           preview: true,
         },
       ],
